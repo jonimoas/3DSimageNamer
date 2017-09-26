@@ -20,10 +20,10 @@ Public Class Form1
     Private Sub rename()
         For Each g In gamelist
             For Each f In files
-                If g.getimg().ToString.ToLower & ".3ds" = Path.GetFileName(f) Then
+                If g.getimg().ToString.ToLower & ".3ds" = Path.GetFileName(f).ToLower Then
                     Try
-                        Dim gamename As String = Regex.Replace(g.getname(), "[^A-Za-z0-9\-/]", " - ")
-                        My.Computer.FileSystem.RenameFile(f, g.getname() & " (" & g.getreg() & ")" & ".3ds")
+                        Dim gamename As String = Regex.Replace(g.getname(), "[^A-Za-z0-9]", " - ")
+                        My.Computer.FileSystem.RenameFile(f, gamename & " (" & g.getreg() & ")" & ".3ds")
                     Catch e As Exception
                         MsgBox(e.ToString)
                     End Try
